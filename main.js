@@ -2,6 +2,32 @@
  * OUR HELPER CODE *
 *******************/
 
+const currentBrush = document.querySelector(".brush .current-brush")
+const palettes = document.querySelectorAll(".palette-color")
+
+let currentColor = "2";
+
+/// loop palettes worked:
+function onClick(i) {
+  currentBrush.className = `current-brush color-${i}`
+}
+
+for (let i = 0; i < palettes.length; i++) {
+  palettes[i].addEventListener("click", () => {
+    onClick(i + 1); // using the current i 
+    currentColor = i + 1;
+  });
+}
+
+
+
+
+
+
+
+/// canvas
+
+
 /*
  * Here we add the squares to the canvas dynamically.
  * You can mostly leave this section alone!
@@ -24,6 +50,25 @@ while (count <= gridWidth * gridWidth) {
   canvas.appendChild(div);
   count++;
 }
+
+const squares = document.querySelectorAll(".square");
+
+// give the current grid box clicked the same color as brush
+
+function onClick2(i) {
+  console.log(squares[i]);
+  squares[i].className = `square color-${currentColor}`
+
+}
+console.log(squares)
+
+for (let i = 0; i < squares.length; i++) {
+  squares[i].addEventListener("click", () => {
+    onClick2(i);
+  });
+}
+
+
 
 // You probably should NOT do these in the order below.
 // That is, you probably should NOT do all the queries,
@@ -71,3 +116,4 @@ while (count <= gridWidth * gridWidth) {
 // You'll need to add the appropriate event listener for each
 // square and for each palette color from the functions you
 // wrote above.
+
